@@ -83,8 +83,9 @@ app.post('/text', (req, res) => {
     return;
   }
   const number = stripPhone(req.body.number);
+  console.log('number', number);
   if (number.length < 9 || number.length > 10) {
-    res.send({ success: false, message: 'Invalid phone number.' });
+    res.send({ success: false, message: 'Invalid phone number.', number: number });
     return;
   }
   textRequestHandler(req, res, number, req.body.carrier, 'us');
